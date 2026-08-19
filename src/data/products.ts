@@ -35,17 +35,17 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=900&q=80",
+        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
         alt: "Bambu Lab X1-Carbon Combo 3D Yazıcı",
         isPrimary: true,
       },
       {
-        url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80",
+        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
         alt: "Bambu Lab X1C AMS Çoklu Filament Ünitesi",
         isPrimary: false,
       },
       {
-        url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=900&q=80",
+        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
         alt: "Bambu Lab X1C İç Mekanizma ve Hotend",
         isPrimary: false,
       },
@@ -123,12 +123,12 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80",
+        url: "https://cdn1.bambulab.com/bambu-lab/product/p1/p1s-combo.png",
         alt: "Bambu Lab P1S Combo 3D Yazıcı",
         isPrimary: true,
       },
       {
-        url: "https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=900&q=80",
+        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
         alt: "Bambu Lab P1S Kapalı Kasa Yapısı",
         isPrimary: false,
       },
@@ -195,7 +195,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=900&q=80",
+        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
         alt: "Bambu Lab A1 Combo 3D Yazıcı",
         isPrimary: true,
       },
@@ -262,7 +262,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=900&q=80",
+        url: "https://www.prusa3d.com/content/images/product/default/2550.jpg",
         alt: "Original Prusa MK4S 3D Yazıcı",
         isPrimary: true,
       },
@@ -325,7 +325,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80",
+        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
         alt: "Shining 3D Einstar El Tipi 3D Tarayıcı",
         isPrimary: true,
       },
@@ -384,7 +384,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=900&q=80",
+        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
         alt: "Uzy Premium PLA 1Kg Filament Siyah",
         isPrimary: true,
       },
@@ -442,7 +442,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80",
+        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
         alt: "Bambu Lab AMS Çoklu Malzeme Sistemi",
         isPrimary: true,
       },
@@ -496,7 +496,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=900&q=80",
+        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
         alt: "Bambu Lab 0.4mm Hardened Steel Hotend",
         isPrimary: true,
       },

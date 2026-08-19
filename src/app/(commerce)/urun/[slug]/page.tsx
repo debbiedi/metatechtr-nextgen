@@ -46,10 +46,10 @@ export default function ProductDetailPage() {
   const favorite = isFavorite(product.id);
 
   const images = product.images.length > 0 ? product.images : [
-    { url: "https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=900&q=80", alt: product.name, isPrimary: true },
-    { url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80", alt: "AMS Unit", isPrimary: false },
-    { url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=900&q=80", alt: "Hotend", isPrimary: false },
-    { url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80", alt: "Enclosure", isPrimary: false },
+    { url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png", alt: product.name, isPrimary: true },
+    { url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png", alt: "AMS Unit", isPrimary: false },
+    { url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png", alt: "Hotend", isPrimary: false },
+    { url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png", alt: "Enclosure", isPrimary: false },
   ];
 
   // Recommended accessories
@@ -59,28 +59,28 @@ export default function ProductDetailPage() {
       name: "Bambu PLA Matte Filament 1kg - Gri",
       brand: "BAMBU LAB",
       price: 950.0,
-      image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=300&q=80",
+      image: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
     },
     {
       id: "rec-2",
       name: "Complete Hotend Assembly with Hardened Steel Nozzle",
       brand: "BAMBU LAB",
       price: 1650.0,
-      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=300&q=80",
+      image: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
     },
     {
       id: "rec-3",
       name: "Textured PEI Plate - 256x256mm",
       brand: "BAMBU LAB",
       price: 1200.0,
-      image: "https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=300&q=80",
+      image: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
     },
     {
       id: "rec-4",
       name: "Bambu PETG-CF Filament 1kg - Siyah",
       brand: "BAMBU LAB",
       price: 1850.0,
-      image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=300&q=80",
+      image: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
     },
   ];
 
@@ -423,7 +423,7 @@ export default function ProductDetailPage() {
                 </div>
                 <div className="w-48 h-40 flex items-center justify-center shrink-0">
                   <img
-                    src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80"
+                    src="https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png"
                     alt="Chamber"
                     className="max-h-full object-contain"
                   />

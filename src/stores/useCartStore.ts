@@ -57,7 +57,7 @@ export const useCartStore = create<CartState>()(
             keyFeatures: [],
             images: [
               {
-                url: "https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=900&q=80",
+                url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
                 alt: "Bambu Lab X1-Carbon Combo",
                 isPrimary: true,
               },

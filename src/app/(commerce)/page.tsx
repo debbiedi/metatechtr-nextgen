@@ -55,7 +55,7 @@ export default function HomePage() {
               <div className="relative rounded-3xl bg-white p-8 border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.06)] flex flex-col items-center">
                 <div className="relative w-full aspect-4/3 flex items-center justify-center">
                   <img
-                    src="https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=900&q=80"
+                    src="https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png"
                     alt="Bambu Lab X1-Carbon Combo 3D Printer"
                     className="max-h-full max-w-full object-contain"
                   />
@@ -126,7 +126,7 @@ export default function HomePage() {
 
             <div className="relative w-full h-44 flex items-end justify-end mt-4">
               <img
-                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80"
+                src="https://cdn1.bambulab.com/bambu-lab/product/p1/p1s-combo.png"
                 alt="3D Yazıcılar"
                 className="max-h-full object-contain"
               />
@@ -150,7 +150,7 @@ export default function HomePage() {
               </div>
               <div className="w-28 h-24 flex items-center justify-center">
                 <img
-                  src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=400&q=80"
+                  src="https://cdn1.bambulab.com/bambu-lab/product/filament/pla-basic/pla-basic-black-1.png"
                   alt="Filamentler"
                   className="max-h-full object-contain"
                 />
@@ -172,7 +172,7 @@ export default function HomePage() {
               </div>
               <div className="w-28 h-24 flex items-center justify-center">
                 <img
-                  src="https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=400&q=80"
+                  src="https://cdn1.bambulab.com/bambu-lab/product/filament/pla-basic/pla-basic-black-1.png"
                   alt="Reçineler"
                   className="max-h-full object-contain"
                 />
@@ -195,7 +195,7 @@ export default function HomePage() {
             </div>
             <div className="w-24 h-20 flex items-center justify-center">
               <img
-                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=300&q=80"
+                src="https://store.metatechtr.com/Data/EditorFiles/catalog/shining3d/einstar/einstar-1.png"
                 alt="3D Tarayıcılar"
                 className="max-h-full object-contain"
               />
@@ -235,7 +235,7 @@ export default function HomePage() {
             <div className="lg:col-span-5">
               <div className="rounded-2xl bg-white p-6 shadow-md flex flex-col items-center justify-center">
                 <img
-                  src="https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=700&q=80"
+                  src="https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png"
                   alt="Bambu Lab X1-Carbon"
                   className="max-h-72 object-contain"
                 />
@@ -352,7 +352,7 @@ export default function HomePage() {
             <div className="lg:col-span-5 flex items-center justify-center">
               <div className="relative rounded-2xl bg-white p-6 shadow-sm border border-slate-100 max-w-xs">
                 <img
-                  src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=500&q=80"
+                  src="https://cdn1.bambulab.com/bambu-lab/product/accessory/textured-pei-plate/textured-pei-plate-1.png"
                   alt="Textured PEI Build Plate"
                   className="max-h-60 object-contain rounded-lg"
                 />

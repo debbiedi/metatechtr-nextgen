@@ -120,7 +120,7 @@ export default function ThreeDQuotePage() {
       keyFeatures: [],
       images: [
         {
-          url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80",
+          url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
           alt: selectedFile.name,
           isPrimary: true,
         },

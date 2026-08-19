@@ -5,70 +5,65 @@ import Link from "next/link";
 import { Product } from "@/types";
 import { formatPrice } from "@/lib/utils";
 import { useCartStore } from "@/stores/useCartStore";
-import { useCompareStore } from "@/stores/useCompareStore";
 import { useFavoritesStore } from "@/stores/useFavoritesStore";
-import { Star, Heart, Scale, ShoppingCart } from "lucide-react";
+import { Star, Heart } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
-  featured?: boolean;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const { addItem } = useCartStore();
-  const { addToCompare, isInCompare, removeFromCompare } = useCompareStore();
   const { toggleFavorite, isFavorite } = useFavoritesStore();
 
-  const inCompare = isInCompare(product.id);
   const favorite = isFavorite(product.id);
 
   const primaryImage =
     product.images.find((img) => img.isPrimary)?.url ||
     product.images[0]?.url ||
-    "https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=600&q=80";
+    "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png";
 
-  // Determine badge type matching Stitch visual
   const isOutOfStock = !product.stock.inStock;
   const isPreOrder = product.badge === "ÖN SİPARİŞ";
   const isBestSeller = product.badge === "ÇOK SATAN";
   const isNew = product.badge === "YENİ NESİL";
-  const isPremium = product.price.discountedPrice >= 50000;
+  const isPremium = product.badge === "PREMİUM SEÇİM" || product.price.discountedPrice >= 50000;
+  const isCampaign = product.badge === "KAMPANYA";
 
   return (
-    <div className="group relative flex flex-col justify-between rounded-2xl bg-white p-5 border border-slate-100 hover:border-slate-200 transition-all duration-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
+    <div className="group flex flex-col justify-between rounded-3xl bg-white p-4 sm:p-5 border border-slate-100 hover:border-slate-200 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
       <div>
         {/* Top Image Container with Badges */}
-        <div className="relative aspect-square overflow-hidden rounded-xl bg-[#fafafa] flex items-center justify-center p-3 mb-4">
+        <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-[#fafafa] flex items-center justify-center mb-5 p-4">
           {/* Status Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
             {isOutOfStock ? (
-              <span className="rounded-full bg-slate-400 text-white text-[9.5px] font-bold px-2.5 py-0.5 tracking-wide">
+              <span className="rounded-full bg-slate-300 text-slate-700 text-[10px] font-bold px-3 py-1 tracking-wide border border-slate-300/50">
                 TÜKENDİ
               </span>
             ) : isPreOrder ? (
-              <span className="rounded-full bg-[#f97316] text-white text-[9.5px] font-bold px-2.5 py-0.5 tracking-wide">
+              <span className="rounded-full bg-[#f97316] text-white text-[10px] font-bold px-3 py-1 tracking-wide">
                 ÖN SİPARİŞ
               </span>
             ) : (
-              <span className="rounded-full bg-[#10b981] text-white text-[9.5px] font-bold px-2.5 py-0.5 tracking-wide">
+              <span className="rounded-full bg-[#10b981] text-white text-[10px] font-bold px-3 py-1 tracking-wide">
                 STOKTA
               </span>
             )}
 
             {isBestSeller && (
-              <span className="rounded-full bg-[#1877f2] text-white text-[9.5px] font-bold px-2.5 py-0.5 tracking-wide">
+              <span className="rounded-full bg-[#1877f2] text-white text-[10px] font-bold px-3 py-1 tracking-wide">
                 ÇOK SATAN
               </span>
             )}
 
             {isPremium && !isBestSeller && (
-              <span className="rounded-full bg-[#0f172a] text-white text-[9.5px] font-bold px-2.5 py-0.5 tracking-wide">
+              <span className="rounded-full bg-[#0f172a] text-white text-[10px] font-bold px-3 py-1 tracking-wide">
                 PREMİUM SEÇİM
               </span>
             )}
 
             {isNew && !isBestSeller && !isPremium && (
-              <span className="rounded-full bg-[#1877f2] text-white text-[9.5px] font-bold px-2.5 py-0.5 tracking-wide">
+              <span className="rounded-full bg-[#1877f2] text-white text-[10px] font-bold px-3 py-1 tracking-wide">
                 YENİ
               </span>
             )}
@@ -81,11 +76,11 @@ export function ProductCard({ product }: ProductCardProps) {
               e.stopPropagation();
               toggleFavorite(product.id);
             }}
-            className="absolute top-3 right-3 p-1.5 rounded-full bg-white/80 hover:bg-white text-slate-400 hover:text-rose-600 transition-colors shadow-2xs z-10"
+            className="absolute top-3 right-3 p-1.5 rounded-full hover:bg-white text-slate-400 hover:text-rose-600 transition-colors z-10"
             aria-label="Favorilere ekle"
           >
             <Heart
-              className={`h-4 w-4 ${favorite ? "fill-rose-600 text-rose-600" : ""}`}
+              className={`h-5 w-5 ${favorite ? "fill-rose-600 text-rose-600" : ""}`}
             />
           </button>
 
@@ -94,60 +89,53 @@ export function ProductCard({ product }: ProductCardProps) {
             <img
               src={primaryImage}
               alt={product.name}
-              className="max-h-full max-w-full object-contain transform group-hover:scale-105 transition-transform duration-300"
+              className="max-h-full max-w-full object-contain mix-blend-multiply transform group-hover:scale-105 transition-transform duration-500 ease-out"
               loading="lazy"
             />
           </Link>
         </div>
 
         {/* Brand */}
-        <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+        <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 px-1">
           {product.brand.name}
         </div>
 
         {/* Product Title */}
-        <Link href={`/urun/${product.slug}`}>
-          <h3 className="text-sm font-bold text-slate-900 line-clamp-2 hover:text-[#1877f2] transition-colors leading-snug mb-2">
+        <Link href={`/urun/${product.slug}`} className="px-1 block">
+          <h3 className="text-sm font-bold text-slate-900 line-clamp-2 hover:text-[#1877f2] transition-colors leading-[1.4] mb-3">
             {product.name}
           </h3>
         </Link>
 
         {/* Rating Stars */}
-        <div className="flex items-center gap-1 text-amber-400 text-xs mb-3">
+        <div className="flex items-center gap-1 text-amber-400 text-xs mb-4 px-1">
           {[...Array(5)].map((_, i) => (
             <Star key={i} className="h-3.5 w-3.5 fill-amber-400" />
           ))}
           <span className="text-[11px] font-medium text-slate-400 ml-1">
-            ({product.reviewCount || 42})
+            ({product.reviewCount || Math.floor(Math.random() * 100) + 10})
           </span>
         </div>
       </div>
 
-      {/* Price & Action Row */}
-      <div className="pt-2 border-t border-slate-50 flex items-center justify-between mt-1">
-        <div>
-          {product.price.hasDiscount && product.price.originalPrice && (
-            <div className="text-[11px] text-slate-400 line-through">
+      {/* Price Row (No Cart Button matching Stitch Image 1) */}
+      <div className="px-1">
+        {product.price.hasDiscount && product.price.originalPrice ? (
+          <div className="flex flex-col">
+            <span className="text-[11px] text-slate-400 line-through mb-0.5">
               {formatPrice(product.price.originalPrice)}
-            </div>
-          )}
-          <div className={`text-base font-black ${product.price.hasDiscount ? "text-[#1877f2]" : "text-slate-900"}`}>
-            {formatPrice(product.price.discountedPrice)}
+            </span>
+            <span className="text-lg font-black text-[#1877f2]">
+              {formatPrice(product.price.discountedPrice)}
+            </span>
           </div>
-        </div>
-
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            addItem(product);
-          }}
-          className="p-2.5 rounded-xl bg-slate-900 hover:bg-[#1877f2] text-white transition-colors shadow-xs"
-          title="Sepete Ekle"
-          aria-label="Sepete Ekle"
-        >
-          <ShoppingCart className="h-4 w-4" />
-        </button>
+        ) : (
+          <div className="flex flex-col">
+            <span className="text-lg font-black text-slate-900 mt-4">
+              {formatPrice(product.price.discountedPrice)}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
