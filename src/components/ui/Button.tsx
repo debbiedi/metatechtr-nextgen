@@ -1,24 +1,26 @@
+"use client";
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 select-none active:scale-[0.98]",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877f2] disabled:pointer-events-none disabled:opacity-50 select-none active:scale-[0.98]",
   {
     variants: {
       variant: {
-        default: "bg-primary text-white hover:bg-primary-dark shadow-sm",
-        secondary: "bg-secondary text-white hover:bg-secondary-light shadow-sm",
-        accent: "bg-accent text-white hover:bg-accent-dark shadow-sm",
-        destructive: "bg-red-600 text-white hover:bg-red-700 shadow-sm",
-        outline: "border border-slate-200 bg-white hover:bg-slate-50 text-slate-900",
+        default: "bg-[#1877f2] text-white hover:bg-[#166fe5] shadow-xs",
+        secondary: "bg-[#0f172a] text-white hover:bg-slate-800 shadow-xs",
+        accent: "bg-[#10b981] text-white hover:bg-emerald-600 shadow-xs",
+        destructive: "bg-red-600 text-white hover:bg-red-700 shadow-xs",
+        outline: "border border-slate-200 bg-white hover:bg-slate-50 text-slate-800",
         ghost: "hover:bg-slate-100 text-slate-700 hover:text-slate-900",
-        link: "text-primary underline-offset-4 hover:underline p-0 h-auto",
+        link: "text-[#1877f2] underline-offset-4 hover:underline p-0 h-auto",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-12 rounded-md px-6 text-base font-semibold",
+        default: "h-11 px-5 py-2.5",
+        sm: "h-9 rounded-lg px-3.5 text-xs font-bold",
+        lg: "h-12 rounded-xl px-7 text-sm font-bold",
         icon: "h-10 w-10 p-0",
       },
     },
@@ -65,7 +67,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               />
             </svg>
-            <span>Yükleniyor...</span>
+            <span>İşleniyor...</span>
           </span>
         ) : (
           children

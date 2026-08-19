@@ -55,7 +55,7 @@ export interface Product {
     slug: string;
     parentSlug?: string;
   };
-  badge?: 'RESMİ DİSTRİBÜTÖR' | 'ÇOK SATAN' | 'YENİ NESİL' | 'KAMPANYA' | 'TÜKENDİ';
+  badge?: 'RESMİ DİSTRİBÜTÖR' | 'ÇOK SATAN' | 'YENİ NESİL' | 'KAMPANYA' | 'TÜKENDİ' | 'ÖN SİPARİŞ' | 'PREMİUM SEÇİM';
   shortDescription: string;
   fullDescription: string;
   keyFeatures: string[];
@@ -69,19 +69,19 @@ export interface Product {
     inStock: boolean;
     quantity: number;
     lowStockThreshold?: number;
-    estimatedDelivery: string; // e.g. "Bugün Kargoda (16:00'a kadar)"
+    estimatedDelivery: string;
   };
   specifications: TechnicalSpecification[];
   variantOptions?: ProductVariantOption[];
-  compatibleAccessories?: string[]; // SKU listesi
+  compatibleAccessories?: string[];
   rating: number;
   reviewCount: number;
   reviews?: ProductReview[];
   warrantyMonths: number;
   isComboAMS?: boolean;
-  buildVolume?: string; // e.g. "256 × 256 × 256 mm"
-  maxSpeed?: string;    // e.g. "500 mm/s"
-  maxTemp?: string;     // e.g. "300 °C"
+  buildVolume?: string;
+  maxSpeed?: string;
+  maxTemp?: string;
 }
 
 export interface Category {

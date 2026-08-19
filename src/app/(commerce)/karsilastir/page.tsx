@@ -3,267 +3,187 @@
 import * as React from "react";
 import Link from "next/link";
 import { PRODUCTS } from "@/data/products";
-import { Product } from "@/types";
-import { useCompareStore } from "@/stores/useCompareStore";
-import { useCartStore } from "@/stores/useCartStore";
 import { formatPrice } from "@/lib/utils";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import {
-  Scale,
-  Trash2,
-  Plus,
-  ShoppingCart,
-  Check,
-  X,
-  Zap,
-  Box,
-  Thermometer,
-  ShieldCheck,
-  Sparkles,
-} from "lucide-react";
+import { useCartStore } from "@/stores/useCartStore";
+import { Check, X } from "lucide-react";
 
 export default function ComparePage() {
-  const { compareList, removeFromCompare, clearCompare, addToCompare } = useCompareStore();
   const { addItem } = useCartStore();
 
-  // If compareList is empty, seed it with 2 top printers for demonstration
-  React.useEffect(() => {
-    if (compareList.length === 0) {
-      addToCompare(PRODUCTS[0]); // Bambu Lab X1C Combo
-      addToCompare(PRODUCTS[1]); // Bambu Lab P1S Combo
-      addToCompare(PRODUCTS[3]); // Original Prusa MK4S
-    }
-  }, [compareList.length, addToCompare]);
-
-  const availablePrinters = PRODUCTS.filter(
-    (p) => !compareList.some((c) => c.id === p.id) && p.category.id === "cat-3d-printers"
-  );
+  const comparisonPrinters = [
+    {
+      id: "comp-1",
+      name: "Bambu Lab X2D Combo",
+      subtitle: "Yüksek hızlı endüstriyel baskı çözümü.",
+      image: "https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=600&q=80",
+      badge: "Popüler",
+      price: "₺42.999",
+      buildVolume: "256 × 256 × 256 mm",
+      maxSpeed: "500 mm/s",
+      nozzle: "0.4mm Hardened Steel",
+      autoCalibration: "Tam Otomatik",
+      amsSupport: "Dahili (Combo)",
+      rawProduct: PRODUCTS[0],
+    },
+    {
+      id: "comp-2",
+      name: "Original Prusa CORE One",
+      subtitle: "Açık kaynaklı güvenilirlik ve hassasiyet.",
+      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
+      price: "₺35.499",
+      priceHighlight: true,
+      buildVolume: "220 × 220 × 250 mm",
+      maxSpeed: "300 mm/s",
+      nozzle: "0.4mm Nextruder",
+      nozzleHighlight: true,
+      autoCalibration: "Yarı Otomatik",
+      amsSupport: "Yok",
+      rawProduct: PRODUCTS[3],
+    },
+    {
+      id: "comp-3",
+      name: "Bambu Lab P2S",
+      subtitle: "Maliyet odaklı, güçlü performans.",
+      image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80",
+      price: "₺28.999",
+      buildVolume: "256 × 256 × 256 mm",
+      maxSpeed: "500 mm/s",
+      nozzle: "0.4mm Stainless Steel",
+      autoCalibration: "Tam Otomatik",
+      amsSupport: "Uyumlu (Opsiyonel)",
+      rawProduct: PRODUCTS[1],
+    },
+  ];
 
   return (
-    <div className="container mx-auto px-4 py-6 space-y-8">
-      <Breadcrumbs
-        items={[
-          { name: "3D Yazıcılar", href: "/3d-yazicilar" },
-          { name: "Model Karşılaştırma Matrisi" },
-        ]}
-      />
-
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
-        <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-1">
-            <Scale className="h-4 w-4" />
-            <span>Teknik Özellik Kıyaslama Aracı</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900">
-            3D Yazıcı Karşılaştırma Matrisi
-          </h1>
-          <p className="text-xs text-slate-500 mt-1">
-            Bambu Lab ve Prusa amiral gemisi yazıcıların tüm teknik parametrelerini yan yana inceleyin.
-          </p>
-        </div>
-
-        {compareList.length > 0 && (
-          <Button
-            onClick={clearCompare}
-            variant="outline"
-            size="sm"
-            className="text-xs text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200"
-          >
-            <Trash2 className="h-3.5 w-3.5 mr-1" />
-            Karşılaştırmayı Temizle
-          </Button>
-        )}
+    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+      {/* Heading */}
+      <div className="text-center space-y-2 max-w-2xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl font-black text-slate-950">
+          Model Karşılaştırması
+        </h1>
+        <p className="text-xs sm:text-sm text-slate-500">
+          İhtiyaçlarınıza en uygun endüstriyel 3D yazıcıyı bulmak için teknik özellikleri karşılaştırın.
+        </p>
       </div>
 
-      {/* Comparison Grid Table */}
-      {compareList.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-12 text-center space-y-4">
-          <Scale className="h-10 w-10 text-slate-400 mx-auto" />
-          <h3 className="text-base font-bold text-slate-900">
-            Karşılaştırma listeniz boş
-          </h3>
-          <p className="text-xs text-slate-500 max-w-sm mx-auto">
-            Ürün kartlarındaki terazi simgesine tıklayarak 4 adede kadar 3D yazıcı ekleyebilirsiniz.
-          </p>
-          <Link href="/3d-yazicilar">
-            <Button size="sm">3D Yazıcıları İncele</Button>
-          </Link>
-        </div>
-      ) : (
-        <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-xs">
-          <table className="w-full text-left border-collapse min-w-[750px]">
-            {/* Header: Product Cards */}
-            <thead>
-              <tr className="border-b border-slate-200 bg-slate-50/50">
-                <th className="p-4 w-48 text-xs font-bold uppercase tracking-wider text-slate-500 align-top">
-                  Model & Fiyat
-                </th>
-                {compareList.map((product) => (
-                  <th key={product.id} className="p-4 w-64 align-top border-l border-slate-200">
-                    <div className="relative space-y-2">
-                      <button
-                        onClick={() => removeFromCompare(product.id)}
-                        className="absolute -top-1 -right-1 text-slate-400 hover:text-red-600 p-1"
-                        title="Kaldır"
-                      >
-                        <X className="h-4 w-4" />
-                      </button>
+      {/* 3-Column Comparison Grid (Exact Stitch Image 5 Layout) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {comparisonPrinters.map((printer) => (
+          <div
+            key={printer.id}
+            className="rounded-3xl bg-white p-6 sm:p-8 border border-slate-100 shadow-[0_4px_25px_rgba(0,0,0,0.03)] flex flex-col justify-between space-y-6"
+          >
+            <div className="space-y-4">
+              {/* Product Image Card */}
+              <div className="relative aspect-square rounded-2xl bg-[#fafafa] p-4 flex items-center justify-center">
+                {printer.badge && (
+                  <span className="absolute top-3 right-3 rounded-full bg-[#10b981] text-white text-[9.5px] font-bold px-2.5 py-0.5">
+                    {printer.badge}
+                  </span>
+                )}
+                <img
+                  src={printer.image}
+                  alt={printer.name}
+                  className="max-h-full object-contain"
+                />
+              </div>
 
-                      <div className="h-32 w-full overflow-hidden rounded-lg bg-white border border-slate-100 flex items-center justify-center p-2">
-                        <img
-                          src={product.images[0]?.url}
-                          alt={product.name}
-                          className="h-full object-contain"
-                        />
-                      </div>
+              {/* Title & Subtitle */}
+              <div>
+                <h3 className="text-xl font-black text-slate-900 leading-tight">
+                  {printer.name}
+                </h3>
+                <p className="text-xs text-slate-500 mt-1">{printer.subtitle}</p>
+              </div>
 
-                      <div className="text-[11px] font-bold text-primary uppercase">
-                        {product.brand.name}
-                      </div>
+              {/* Rows List (Alternating light blue/slate rows) */}
+              <div className="space-y-1 text-xs pt-2">
+                {/* Fiyat */}
+                <div className="flex justify-between items-center p-2.5 rounded-lg">
+                  <span className="text-slate-500 font-medium">Fiyat</span>
+                  <span
+                    className={`font-black ${
+                      printer.priceHighlight ? "text-[#1877f2]" : "text-slate-900"
+                    }`}
+                  >
+                    {printer.price}
+                  </span>
+                </div>
 
-                      <Link href={`/urun/${product.slug}`}>
-                        <h4 className="text-xs font-bold text-slate-900 hover:text-primary transition-colors line-clamp-2">
-                          {product.name}
-                        </h4>
-                      </Link>
+                {/* Baskı Hacmi */}
+                <div className="flex justify-between items-center p-2.5 rounded-lg bg-[#f0f7ff]/70">
+                  <span className="text-slate-500 font-medium">Baskı Hacmi</span>
+                  <span className="font-bold text-[#1877f2]">
+                    {printer.buildVolume}
+                  </span>
+                </div>
 
-                      <div className="text-base font-extrabold text-slate-900">
-                        {formatPrice(product.price.discountedPrice)}
-                      </div>
+                {/* Maksimum Hız */}
+                <div className="flex justify-between items-center p-2.5 rounded-lg">
+                  <span className="text-slate-500 font-medium">Maksimum Hız</span>
+                  <span className="font-bold text-[#1877f2]">
+                    {printer.maxSpeed}
+                  </span>
+                </div>
 
-                      <Button
-                        onClick={() => addItem(product)}
-                        size="sm"
-                        className="w-full text-xs font-bold gap-1"
-                      >
-                        <ShoppingCart className="h-3.5 w-3.5" />
-                        <span>Sepete Ekle</span>
-                      </Button>
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            </thead>
+                {/* Nozzle */}
+                <div className="flex justify-between items-center p-2.5 rounded-lg bg-[#f0f7ff]/70">
+                  <span className="text-slate-500 font-medium">Nozzle</span>
+                  <span
+                    className={`font-bold ${
+                      printer.nozzleHighlight ? "text-[#1877f2]" : "text-slate-800"
+                    }`}
+                  >
+                    {printer.nozzle}
+                  </span>
+                </div>
 
-            {/* Spec Rows */}
-            <tbody className="divide-y divide-slate-100 text-xs">
-              {/* Row: Baskı Hacmi */}
-              <tr className="hover:bg-slate-50/50">
-                <td className="p-4 font-bold text-slate-700 bg-slate-50/30 flex items-center gap-1.5">
-                  <Box className="h-4 w-4 text-primary" />
-                  <span>Baskı Hacmi</span>
-                </td>
-                {compareList.map((p) => (
-                  <td key={p.id} className="p-4 border-l border-slate-200 font-semibold text-slate-900">
-                    {p.buildVolume || "256 × 256 × 256 mm"}
-                  </td>
-                ))}
-              </tr>
+                {/* Oto Kalibrasyon */}
+                <div className="flex justify-between items-center p-2.5 rounded-lg">
+                  <span className="text-slate-500 font-medium">Oto Kalibrasyon</span>
+                  <span className="font-bold text-[#1877f2] flex items-center gap-1">
+                    <Check className="h-3.5 w-3.5" />
+                    <span>{printer.autoCalibration}</span>
+                  </span>
+                </div>
 
-              {/* Row: Maksimum Hız */}
-              <tr className="hover:bg-slate-50/50">
-                <td className="p-4 font-bold text-slate-700 bg-slate-50/30 flex items-center gap-1.5">
-                  <Zap className="h-4 w-4 text-emerald-600" />
-                  <span>Maksimum Hız</span>
-                </td>
-                {compareList.map((p) => (
-                  <td key={p.id} className="p-4 border-l border-slate-200 font-semibold text-emerald-700">
-                    {p.maxSpeed || "500 mm/s"}
-                  </td>
-                ))}
-              </tr>
-
-              {/* Row: Nozzle Sıcaklığı */}
-              <tr className="hover:bg-slate-50/50">
-                <td className="p-4 font-bold text-slate-700 bg-slate-50/30 flex items-center gap-1.5">
-                  <Thermometer className="h-4 w-4 text-amber-500" />
-                  <span>Maksimum Sıcaklık</span>
-                </td>
-                {compareList.map((p) => (
-                  <td key={p.id} className="p-4 border-l border-slate-200 font-semibold text-slate-900">
-                    {p.maxTemp || "300 °C"}
-                  </td>
-                ))}
-              </tr>
-
-              {/* Row: AMS Çoklu Renk Desteği */}
-              <tr className="hover:bg-slate-50/50">
-                <td className="p-4 font-bold text-slate-700 bg-slate-50/30">
-                  Çok Renk Desteği
-                </td>
-                {compareList.map((p) => (
-                  <td key={p.id} className="p-4 border-l border-slate-200">
-                    {p.isComboAMS ? (
-                      <span className="inline-flex items-center gap-1 text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">
+                {/* AMS Desteği */}
+                <div className="flex justify-between items-center p-2.5 rounded-lg bg-[#f0f7ff]/70">
+                  <span className="text-slate-500 font-medium">AMS Desteği</span>
+                  <span
+                    className={`font-bold flex items-center gap-1 ${
+                      printer.amsSupport === "Yok"
+                        ? "text-slate-500"
+                        : "text-[#1877f2]"
+                    }`}
+                  >
+                    {printer.amsSupport === "Yok" ? (
+                      <>
+                        <X className="h-3.5 w-3.5" />
+                        <span>Yok</span>
+                      </>
+                    ) : (
+                      <>
                         <Check className="h-3.5 w-3.5" />
-                        AMS ile 16 Renk
-                      </span>
-                    ) : (
-                      <span className="text-slate-500">Tek Renk (Opsiyonel Eklenebilir)</span>
+                        <span>{printer.amsSupport}</span>
+                      </>
                     )}
-                  </td>
-                ))}
-              </tr>
+                  </span>
+                </div>
+              </div>
+            </div>
 
-              {/* Row: Karbon Fiber Uyumluluğu */}
-              <tr className="hover:bg-slate-50/50">
-                <td className="p-4 font-bold text-slate-700 bg-slate-50/30">
-                  Karbon Fiber (CF) Baskı
-                </td>
-                {compareList.map((p) => (
-                  <td key={p.id} className="p-4 border-l border-slate-200">
-                    {p.sku.includes("X1C") || p.sku.includes("MK4S") ? (
-                      <span className="inline-flex items-center gap-1 text-emerald-700 font-bold">
-                        <Check className="h-3.5 w-3.5 text-emerald-600" />
-                        Sertleştirilmiş Çelik Uç ile Tam Uyumlu
-                      </span>
-                    ) : (
-                      <span className="text-slate-500">Ek Nozzle Yükseltmesi Gerektirir</span>
-                    )}
-                  </td>
-                ))}
-              </tr>
-
-              {/* Row: Garanti */}
-              <tr className="hover:bg-slate-50/50">
-                <td className="p-4 font-bold text-slate-700 bg-slate-50/30 flex items-center gap-1.5">
-                  <ShieldCheck className="h-4 w-4 text-emerald-600" />
-                  <span>Garanti Kapsamı</span>
-                </td>
-                {compareList.map((p) => (
-                  <td key={p.id} className="p-4 border-l border-slate-200 font-medium text-slate-700">
-                    2 Yıl MetaTechTR Distribütör Garantisi
-                  </td>
-                ))}
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      )}
-
-      {/* Add More Items Drawer / Quick Picker */}
-      {availablePrinters.length > 0 && compareList.length < 4 && (
-        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-2">
-          <div className="text-xs font-bold text-slate-700">
-            Karşılaştırmaya Başka Bir Yazıcı Ekleyin:
+            {/* Bottom Add to Cart Button */}
+            <button
+              onClick={() => addItem(printer.rawProduct)}
+              className="w-full h-11 rounded-xl bg-[#0f172a] hover:bg-slate-800 text-white font-bold text-xs transition-colors shadow-xs"
+            >
+              Sepete Ekle
+            </button>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {availablePrinters.map((printer) => (
-              <button
-                key={printer.id}
-                onClick={() => addToCompare(printer)}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-800 hover:border-primary transition-all shadow-2xs"
-              >
-                <Plus className="h-3 w-3 text-primary" />
-                <span>{printer.name}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+        ))}
+      </div>
     </div>
   );
 }

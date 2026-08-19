@@ -3,153 +3,65 @@
 import * as React from "react";
 import Link from "next/link";
 import { PRODUCTS } from "@/data/products";
-import { CATEGORIES } from "@/data/categories";
-import { BRANDS } from "@/data/brands";
 import { ProductCard } from "@/components/commerce/ProductCard";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { formatPrice } from "@/lib/utils";
 import {
   ArrowRight,
   ShieldCheck,
-  Zap,
-  Sparkles,
-  Award,
-  CheckCircle2,
-  PhoneCall,
+  Truck,
+  Wrench,
   RotateCcw,
-  Sliders,
-  ChevronRight,
-  Star,
-  Users,
+  Lock,
+  CheckCircle2,
 } from "lucide-react";
 
 export default function HomePage() {
-  const [activeTab, setActiveTab] = React.useState<"printers" | "filaments" | "parts">("printers");
-
-  const printers = PRODUCTS.filter((p) => p.category.id === "cat-3d-printers");
-  const filaments = PRODUCTS.filter((p) => p.category.id === "cat-filaments");
-  const parts = PRODUCTS.filter((p) => p.category.id === "cat-spare-parts");
-
-  const displayProducts =
-    activeTab === "printers" ? printers : activeTab === "filaments" ? filaments : parts;
-
-  const heroProduct = PRODUCTS[0]; // Bambu Lab X1-Carbon Combo
+  const featuredPrinters = PRODUCTS.slice(0, 4);
 
   return (
-    <div className="space-y-16 pb-16">
-      {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-secondary-dark via-secondary to-slate-900 text-white py-16 lg:py-24 border-b border-slate-800">
-        {/* Background glow effects */}
-        <div className="absolute top-0 right-1/4 -z-0 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 -z-0 h-80 w-80 rounded-full bg-accent/15 blur-3xl" />
-
-        <div className="container mx-auto px-4 relative z-10">
+    <div className="space-y-20 pb-20">
+      {/* 1. HERO SECTION (Exact Stitch Layout) */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50/50 to-white pt-12 pb-16 lg:pt-16 lg:pb-24 border-b border-slate-100">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Column: Headlines & CTAs */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3.5 py-1.5 text-xs font-semibold text-primary-light border border-primary/30 backdrop-blur-xs">
-                <Award className="h-4 w-4 text-accent" />
-                <span>Bambu Lab & Original Prusa Türkiye Resmi Distribütörü</span>
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
-                Geleceğin 3D Baskı Teknolojisi,{" "}
-                <span className="bg-gradient-to-r from-primary-light via-white to-accent bg-clip-text text-transparent">
-                  MetaTechTR Güvencesiyle
-                </span>
+            {/* Left Column: Headline & Editorial CTAs */}
+            <div className="lg:col-span-6 space-y-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15]">
+                <span className="text-slate-950 block">Fikrinizi</span>
+                <span className="text-[#1877f2] block">Gerçeğe Dönüştürün.</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-300 max-w-xl font-normal leading-relaxed">
-                Yapay zeka destekli yüksek hızlı 3D yazıcılar, endüstriyel 3D tarayıcılar, yüksek toleranslı filamentler ve 2 yıl yetkili teknik servis garantisi.
+              <p className="text-base sm:text-lg text-slate-600 max-w-lg font-normal leading-relaxed">
+                Profesyonel 3D yazıcılar, filamentler ve üretim çözümleri. Yüksek hassasiyet, güvenilirlik ve endüstriyel kalite tek bir yerde.
               </p>
 
-              {/* Action Buttons */}
+              {/* CTAs */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link href="/3d-yazicilar">
-                  <Button size="lg" className="font-bold gap-2 text-base px-6 shadow-lg shadow-primary/30">
-                    <span>3D Yazıcıları Keşfet</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
+                  <button className="h-12 px-7 rounded-xl bg-[#0f172a] hover:bg-slate-800 text-white font-bold text-sm transition-all shadow-md active:scale-98">
+                    3D Yazıcıları Keşfet
+                  </button>
                 </Link>
 
-                <Link href="/3d-baski-teklifi">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="font-bold gap-2 bg-slate-800/80 hover:bg-slate-700 text-white border-slate-700 text-base"
-                  >
-                    <Sparkles className="h-4 w-4 text-amber-400" />
-                    <span>3D Baskı Fiyat Teklifi Al</span>
-                  </Button>
+                <Link href="/3d-yazicilar">
+                  <button className="h-12 px-7 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm border border-slate-200 transition-all active:scale-98">
+                    En Yeni Modeller
+                  </button>
                 </Link>
-              </div>
-
-              {/* Micro stats banner */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800 text-slate-300">
-                <div>
-                  <div className="text-xl sm:text-2xl font-extrabold text-white">20.000+</div>
-                  <div className="text-xs text-slate-400">Mutlu Müşteri</div>
-                </div>
-                <div>
-                  <div className="text-xl sm:text-2xl font-extrabold text-white">%100 Orijinal</div>
-                  <div className="text-xs text-slate-400">Resmi Distribütör</div>
-                </div>
-                <div>
-                  <div className="text-xl sm:text-2xl font-extrabold text-white">Aynı Gün</div>
-                  <div className="text-xs text-slate-400">Hızlı Kargo Garantisi</div>
-                </div>
               </div>
             </div>
 
-            {/* Right Column: Hero Spotlight Card */}
-            <div className="lg:col-span-5">
-              <div className="relative rounded-2xl bg-gradient-to-b from-slate-800/90 to-slate-900/90 p-6 border border-slate-700/80 shadow-2xl backdrop-blur-md">
-                <div className="absolute -top-3 left-6">
-                  <Badge variant="distributor" className="shadow-md">
-                    HAFTANIN ÖNE ÇIKAN AMİRAL GEMİSİ
-                  </Badge>
-                </div>
-
-                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-slate-950 mb-4 mt-2">
+            {/* Right Column: Premium Flagship 3D Printer Floating Card */}
+            <div className="lg:col-span-6">
+              <div className="relative rounded-3xl bg-white p-8 border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.06)] flex flex-col items-center">
+                <div className="relative w-full aspect-4/3 flex items-center justify-center">
                   <img
-                    src={heroProduct.images[0]?.url}
-                    alt={heroProduct.name}
-                    className="h-full w-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
+                    src="https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=900&q=80"
+                    alt="Bambu Lab X1-Carbon Combo 3D Printer"
+                    className="max-h-full max-w-full object-contain"
                   />
-                  <div className="absolute bottom-2 right-2 rounded-lg bg-black/70 px-2.5 py-1 text-[11px] font-bold text-accent backdrop-blur-xs flex items-center gap-1">
-                    <Zap className="h-3 w-3" />
-                    <span>500 mm/s Hız</span>
-                  </div>
                 </div>
-
-                <div className="space-y-2">
-                  <div className="text-xs font-bold text-primary uppercase">
-                    {heroProduct.brand.name}
-                  </div>
-                  <h3 className="text-lg font-bold text-white leading-snug">
-                    {heroProduct.name}
-                  </h3>
-                  <p className="text-xs text-slate-400 line-clamp-2">
-                    {heroProduct.shortDescription}
-                  </p>
-
-                  <div className="flex items-baseline justify-between pt-3 border-t border-slate-700">
-                    <div>
-                      <div className="text-xs text-slate-400 line-through">
-                        {formatPrice(heroProduct.price.originalPrice || 74500)}
-                      </div>
-                      <div className="text-2xl font-extrabold text-white">
-                        {formatPrice(heroProduct.price.discountedPrice)}
-                      </div>
-                    </div>
-                    <Link href={`/urun/${heroProduct.slug}`}>
-                      <Button size="sm" className="font-bold gap-1">
-                        <span>İncele & Satın Al</span>
-                        <ArrowRight className="h-3.5 w-3.5" />
-                      </Button>
-                    </Link>
-                  </div>
+                <div className="text-[11px] text-slate-400 mt-2">
+                  *The filaments in the picture are sold separately
                 </div>
               </div>
             </div>
@@ -157,234 +69,294 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. OFFICIAL BRANDS GRID */}
-      <section className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-8">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-primary mb-1">
-            Yetkili Distribütörlükler & Markalar
-          </h2>
-          <p className="text-2xl font-extrabold text-slate-900">
-            Dünya Lideri 3D Ekosistemi Tek Çatı Altında
-          </p>
-        </div>
+      {/* 2. VALUE PROPS HORIZONTAL BAR */}
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 py-6 border-y border-slate-100 text-xs font-semibold text-slate-700">
+          <div className="flex items-center gap-2.5">
+            <ShieldCheck className="h-4 w-4 text-[#1877f2] shrink-0" />
+            <span>Orijinal Ürün / Distribütör Garantisi</span>
+          </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
-          {BRANDS.map((brand) => (
-            <Link
-              key={brand.id}
-              href={`/${brand.slug}`}
-              className="flex flex-col items-center justify-center p-4 rounded-xl bg-white border border-slate-200 hover:border-primary hover:shadow-md transition-all text-center group"
-            >
-              <div className="h-10 w-10 rounded-full bg-slate-50 flex items-center justify-center font-bold text-slate-800 text-sm mb-2 group-hover:bg-primary group-hover:text-white transition-colors">
-                {brand.name.substring(0, 2).toUpperCase()}
-              </div>
-              <span className="text-xs font-bold text-slate-900 group-hover:text-primary transition-colors">
-                {brand.name}
-              </span>
-              {brand.isOfficialDistributor && (
-                <span className="text-[10px] text-emerald-600 font-semibold mt-0.5">
-                  Resmi Distribütör
-                </span>
-              )}
-            </Link>
-          ))}
+          <div className="flex items-center gap-2.5">
+            <Truck className="h-4 w-4 text-[#1877f2] shrink-0" />
+            <span>Aynı Gün Kargo</span>
+          </div>
+
+          <div className="flex items-center gap-2.5">
+            <Wrench className="h-4 w-4 text-[#1877f2] shrink-0" />
+            <span>Yetkili Teknik Servis</span>
+          </div>
+
+          <div className="flex items-center gap-2.5">
+            <RotateCcw className="h-4 w-4 text-[#1877f2] shrink-0" />
+            <span>14 Gün Koşulsuz İade</span>
+          </div>
+
+          <div className="flex items-center gap-2.5 col-span-2 md:col-span-1">
+            <Lock className="h-4 w-4 text-[#1877f2] shrink-0" />
+            <span>Güvenli Ödeme</span>
+          </div>
         </div>
       </section>
 
-      {/* 3. CATEGORY SHOWCASE TILES */}
-      <section className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-2xl font-extrabold text-slate-900">Kategorilere Göre Keşfedin</h2>
-            <p className="text-xs text-slate-500">İhtiyacınıza uygun ürün grubunu seçin</p>
-          </div>
+      {/* 3. KATEGORİLER (Stitch Bento Grid Layout) */}
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div>
+          <h2 className="text-2xl font-black text-slate-900">Kategoriler</h2>
+          <p className="text-xs text-slate-500 mt-0.5">İhtiyacınıza uygun çözümü bulun</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {CATEGORIES.map((cat) => (
-            <Link
-              key={cat.id}
-              href={`/${cat.slug}`}
-              className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 hover:border-primary/50 hover:shadow-lg transition-all"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="rounded-lg bg-primary/10 p-2.5 text-primary font-bold text-xs">
-                  {cat.productCount}+ Ürün
-                </span>
-                <ChevronRight className="h-4 w-4 text-slate-400 group-hover:translate-x-1 group-hover:text-primary transition-all" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900 group-hover:text-primary transition-colors mb-1">
-                {cat.name}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          {/* Big Left Box: 3D Yazıcılar (Span 7 cols) */}
+          <Link
+            href="/3d-yazicilar"
+            className="md:col-span-7 group relative overflow-hidden rounded-3xl bg-white p-8 border border-slate-100 hover:border-slate-200 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between min-h-[320px]"
+          >
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#1877f2] transition-colors">
+                3D Yazıcılar
               </h3>
-              <p className="text-xs text-slate-500 line-clamp-2">
-                {cat.description}
+              <p className="text-xs text-slate-500 mt-1 max-w-xs">
+                FDM, Reçine ve Endüstriyel seviye üretim araçları.
               </p>
+              <div className="mt-4 text-[#1877f2] font-bold text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <ArrowRight className="h-4 w-4" />
+              </div>
+            </div>
+
+            <div className="relative w-full h-44 flex items-end justify-end mt-4">
+              <img
+                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80"
+                alt="3D Yazıcılar"
+                className="max-h-full object-contain"
+              />
+            </div>
+          </Link>
+
+          {/* Right Column: 2 Stacked Cards (Span 5 cols) */}
+          <div className="md:col-span-5 flex flex-col gap-6">
+            {/* Filamentler Card */}
+            <Link
+              href="/filamentler"
+              className="group relative overflow-hidden rounded-3xl bg-white p-6 border border-slate-100 hover:border-slate-200 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex items-center justify-between flex-1"
+            >
+              <div>
+                <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#1877f2] transition-colors">
+                  Filamentler
+                </h3>
+                <div className="mt-2 text-[#1877f2] font-bold text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  <ArrowRight className="h-4 w-4" />
+                </div>
+              </div>
+              <div className="w-28 h-24 flex items-center justify-center">
+                <img
+                  src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=400&q=80"
+                  alt="Filamentler"
+                  className="max-h-full object-contain"
+                />
+              </div>
             </Link>
-          ))}
+
+            {/* Reçineler Card */}
+            <Link
+              href="/recineler"
+              className="group relative overflow-hidden rounded-3xl bg-white p-6 border border-slate-100 hover:border-slate-200 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex items-center justify-between flex-1"
+            >
+              <div>
+                <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#1877f2] transition-colors">
+                  Reçineler
+                </h3>
+                <div className="mt-2 text-[#1877f2] font-bold text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  <ArrowRight className="h-4 w-4" />
+                </div>
+              </div>
+              <div className="w-28 h-24 flex items-center justify-center">
+                <img
+                  src="https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=400&q=80"
+                  alt="Reçineler"
+                  className="max-h-full object-contain"
+                />
+              </div>
+            </Link>
+          </div>
+
+          {/* 3D Tarayıcılar Card (Bottom Row) */}
+          <Link
+            href="/3d-tarayici"
+            className="md:col-span-4 group relative overflow-hidden rounded-3xl bg-white p-6 border border-slate-100 hover:border-slate-200 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex items-center justify-between"
+          >
+            <div>
+              <h3 className="text-base font-bold text-slate-900 group-hover:text-[#1877f2] transition-colors">
+                3D Tarayıcılar
+              </h3>
+              <div className="mt-2 text-[#1877f2] font-bold text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <ArrowRight className="h-4 w-4" />
+              </div>
+            </div>
+            <div className="w-24 h-20 flex items-center justify-center">
+              <img
+                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=300&q=80"
+                alt="3D Tarayıcılar"
+                className="max-h-full object-contain"
+              />
+            </div>
+          </Link>
         </div>
       </section>
 
-      {/* 4. FEATURED PRODUCTS (TABS) */}
-      <section className="container mx-auto px-4">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+      {/* 4. ÖNE ÇIKAN ÜRÜNLER (4 Cards Grid) */}
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-extrabold text-slate-900">
-              Öne Çıkan Ürünler
-            </h2>
-            <p className="text-xs text-slate-500">
-              En çok tercih edilen yazıcılar, sarf malzemeleri ve yedek parçalar
-            </p>
+            <h2 className="text-2xl font-black text-slate-900">Öne Çıkan Ürünler</h2>
+            <p className="text-xs text-slate-500 mt-0.5">Profesyonellerin tercihi.</p>
           </div>
-
-          {/* Filter Tabs */}
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 text-xs font-bold">
-            <button
-              onClick={() => setActiveTab("printers")}
-              className={`px-3.5 py-1.5 rounded-lg transition-all ${
-                activeTab === "printers"
-                  ? "bg-white text-slate-900 shadow-xs"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
-            >
-              3D Yazıcılar ({printers.length})
-            </button>
-            <button
-              onClick={() => setActiveTab("filaments")}
-              className={`px-3.5 py-1.5 rounded-lg transition-all ${
-                activeTab === "filaments"
-                  ? "bg-white text-slate-900 shadow-xs"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
-            >
-              Filamentler ({filaments.length})
-            </button>
-            <button
-              onClick={() => setActiveTab("parts")}
-              className={`px-3.5 py-1.5 rounded-lg transition-all ${
-                activeTab === "parts"
-                  ? "bg-white text-slate-900 shadow-xs"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
-            >
-              Yedek Parça & AMS ({parts.length})
-            </button>
-          </div>
+          <Link
+            href="/3d-yazicilar"
+            className="text-xs font-bold text-[#1877f2] hover:underline flex items-center gap-1"
+          >
+            <span>Tümünü Gör</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
 
-        {/* Product Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {displayProducts.map((product) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featuredPrinters.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
 
-      {/* 5. 3D PRINT QUOTE & COMPARISON BANNER */}
-      <section className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Card 1: 3D Print Quote */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-primary-dark p-8 text-white shadow-xl flex flex-col justify-between">
-            <div className="space-y-3 relative z-10 max-w-md">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold backdrop-blur-xs">
-                <Sparkles className="h-3.5 w-3.5 text-amber-300" />
-                <span>ONLINE 3D BASKI MERKEZİ</span>
+      {/* 5. BAMBU LAB SPOTLIGHT (Dark Navy Banner) */}
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl bg-[#0f172a] text-white p-8 sm:p-12 border border-slate-800 shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left: White Card with 3D Printer Photo */}
+            <div className="lg:col-span-5">
+              <div className="rounded-2xl bg-white p-6 shadow-md flex flex-col items-center justify-center">
+                <img
+                  src="https://images.unsplash.com/photo-1631556097152-c39479cbfeab?auto=format&fit=crop&w=700&q=80"
+                  alt="Bambu Lab X1-Carbon"
+                  className="max-h-72 object-contain"
+                />
+                <span className="text-[10px] text-slate-400 mt-2">
+                  *The filaments in the picture are sold separately
+                </span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-black">
-                CAD / STL Dosyanızı Yükleyin, Anında Fiyat Alın
-              </h3>
-              <p className="text-xs sm:text-sm text-white/80 leading-relaxed">
-                FDM, SLA Reçine ve Endüstriyel SLS teknolojileriyle prototip ve seri üretim parçalarınızı en uygun fiyata basıp adresinize gönderelim.
-              </p>
             </div>
 
-            <div className="pt-6 relative z-10">
-              <Link href="/3d-baski-teklifi">
-                <Button size="lg" className="bg-white text-primary hover:bg-slate-100 font-bold gap-2">
-                  <span>Hemen 3D Teklifi Hesapla</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Card 2: Warranty & RMA Service */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-secondary to-secondary-dark p-8 text-white shadow-xl flex flex-col justify-between border border-slate-800">
-            <div className="space-y-3 relative z-10 max-w-md">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-bold text-accent backdrop-blur-xs border border-emerald-500/30">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                <span>RESMİ TEKNİK SERVİS PORTALI</span>
+            {/* Right: Technical Details & Stats */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-block text-[11px] font-bold tracking-widest text-[#1877f2] uppercase">
+                ÖNE ÇIKAN MARKA
               </div>
-              <h3 className="text-2xl sm:text-3xl font-black">
-                Cihaz Seri No ile Garanti ve Arıza Takibi
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                MetaTechTR garantili 3D yazıcınızın garanti durumunu sorgulayın, yetkili servis randevusu ve RMA arıza kaydı oluşturun.
-              </p>
-            </div>
 
-            <div className="pt-6 relative z-10">
-              <Link href="/garanti-ve-servis">
-                <Button size="lg" className="bg-accent hover:bg-accent-dark text-white font-bold gap-2">
-                  <span>Garanti & Servis Sorgula</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
+              <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+                Bambu Lab ile Üretimin Yeni Nesli
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
+                Yapay zeka destekli hata tespiti, çoklu renk baskı kapasitesi (AMS) ve inanılmaz hızlar. Endüstriyel performansı masaüstünüze getiren yenilikçi teknoloji ile tanışın.
+              </p>
+
+              {/* Two Big Stats */}
+              <div className="grid grid-cols-2 gap-6 pt-2 border-t border-slate-800/80 max-w-md">
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-white">500 mm/s</div>
+                  <div className="text-xs text-slate-400 mt-0.5">Maksimum Hız</div>
+                </div>
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black text-white">AI Lidar</div>
+                  <div className="text-xs text-slate-400 mt-0.5">Mikro Metre Hassasiyet</div>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="pt-2">
+                <Link href="/bambu-lab">
+                  <button className="h-11 px-6 rounded-xl bg-[#1877f2] hover:bg-[#166fe5] text-white font-bold text-xs transition-colors shadow-md">
+                    Bambu Lab Serisini İncele
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6. WHY METATECHTR? TRUST SECTION */}
-      <section className="bg-slate-100/70 py-16 border-y border-slate-200">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-primary mb-1">
-              Neden MetaTechTR?
-            </h2>
-            <p className="text-2xl sm:text-3xl font-black text-slate-900">
-              Türkiye&apos;nin En Güvenilir 3D Yazıcı Distribütörü
-            </p>
-          </div>
+      {/* 6. YETKİLİ MARKALAR BAR */}
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <div className="text-[11px] font-bold uppercase tracking-widest text-slate-400">
+          YETKİLİ MARKALAR
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="rounded-xl bg-white p-6 border border-slate-200 shadow-xs space-y-2">
-              <div className="h-10 w-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold">
-                <Award className="h-5 w-5" />
-              </div>
-              <h4 className="text-base font-bold text-slate-900">Resmi İthalat & Distribütörlük</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Bambu Lab ve Prusa ile doğrudan üretici anlaşmalı orijinal kutulu ve garantili ürünler.
+        <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16 text-lg sm:text-xl font-bold text-slate-800 opacity-80">
+          <Link href="/bambu-lab" className="hover:text-[#1877f2] transition-colors">
+            Bambu Lab
+          </Link>
+          <Link href="/original-prusa" className="hover:text-[#1877f2] transition-colors">
+            Prusa
+          </Link>
+          <Link href="/3d-yazicilar" className="hover:text-[#1877f2] transition-colors">
+            UltiMaker
+          </Link>
+          <Link href="/3d-yazicilar" className="hover:text-[#1877f2] transition-colors">
+            Creality
+          </Link>
+        </div>
+      </section>
+
+      {/* 7. MÜKEMMEL BASKI İÇİN MÜKEMMEL ZEMİN (PEI Plate Banner) */}
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl bg-slate-50 border border-slate-100 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 sm:p-12">
+            {/* Left: Text */}
+            <div className="lg:col-span-7 space-y-4">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                MALZEME LABORATUVARI
+              </span>
+
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
+                Mükemmel Baskı İçin Mükemmel Zemin
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-lg">
+                Yüksek kaliteli PEI tablalar ve gelişmiş filament çeşitleriyle baskılarınızın ilk katmanından son katmanına kadar kusursuz olmasını sağlayın. Her uygulama için doğru materyal.
               </p>
+
+              <ul className="space-y-2 text-xs text-slate-700 pt-2 font-medium">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-[#1877f2]" />
+                  <span>Çift taraflı dokulu PEI yüzey</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-[#1877f2]" />
+                  <span>Mükemmel yapışma ve kolay ayrılma</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-[#1877f2]" />
+                  <span>Yüksek sıcaklık dayanımı</span>
+                </li>
+              </ul>
+
+              <div className="pt-2">
+                <Link href="/3d-yazici-yedek-parca-ve-aksesuarlari">
+                  <button className="h-10 px-5 rounded-xl bg-white border border-slate-300 hover:border-slate-400 text-slate-800 font-bold text-xs transition-colors">
+                    Özel Malzemeleri Görüntüle
+                  </button>
+                </Link>
+              </div>
             </div>
 
-            <div className="rounded-xl bg-white p-6 border border-slate-200 shadow-xs space-y-2">
-              <div className="h-10 w-10 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold">
-                <ShieldCheck className="h-5 w-5" />
+            {/* Right: Gold Textured PEI Plate Image */}
+            <div className="lg:col-span-5 flex items-center justify-center">
+              <div className="relative rounded-2xl bg-white p-6 shadow-sm border border-slate-100 max-w-xs">
+                <img
+                  src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=500&q=80"
+                  alt="Textured PEI Build Plate"
+                  className="max-h-60 object-contain rounded-lg"
+                />
               </div>
-              <h4 className="text-base font-bold text-slate-900">2 Yıl Yetkili Servis</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Kendi bünyemizdeki sertifikalı teknik servis ekibimiz ve orijinal yedek parça stoğumuz.
-              </p>
-            </div>
-
-            <div className="rounded-xl bg-white p-6 border border-slate-200 shadow-xs space-y-2">
-              <div className="h-10 w-10 rounded-lg bg-indigo-500/10 text-indigo-600 flex items-center justify-center font-bold">
-                <PhoneCall className="h-5 w-5" />
-              </div>
-              <h4 className="text-base font-bold text-slate-900">444 3387 Çağrı Merkezi</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Kurulumdan dilimleme ayarlarına kadar telefon ve WhatsApp üzerinden birebir mühendislik desteği.
-              </p>
-            </div>
-
-            <div className="rounded-xl bg-white p-6 border border-slate-200 shadow-xs space-y-2">
-              <div className="h-10 w-10 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center font-bold">
-                <Zap className="h-5 w-5" />
-              </div>
-              <h4 className="text-base font-bold text-slate-900">Stoktan Hızlı Teslimat</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                İstanbul Nurol Plaza ve Arnavutköy ana depomuzdan aynı gün kargo imkanı.
-              </p>
             </div>
           </div>
         </div>
