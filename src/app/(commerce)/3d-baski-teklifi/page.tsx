@@ -120,7 +120,7 @@ export default function ThreeDQuotePage() {
       keyFeatures: [],
       images: [
         {
-          url: "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp",
+          url: "https://cdn.shopify.com/s/files/1/0569/0281/1815/products/x1-carbon-combo_800x.png",
           alt: selectedFile.name,
           isPrimary: true,
         },

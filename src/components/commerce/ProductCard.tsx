@@ -20,7 +20,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const primaryImage =
     product.images.find((img) => img.isPrimary)?.url ||
     product.images[0]?.url ||
-    "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp";
+    "https://cdn.shopify.com/s/files/1/0569/0281/1815/products/x1-carbon-combo_800x.png";
 
   const isOutOfStock = !product.stock.inStock;
   const isPreOrder = product.badge === "ÖN SİPARİŞ";
@@ -33,7 +33,7 @@ export function ProductCard({ product }: ProductCardProps) {
     <div className="group flex flex-col justify-between rounded-3xl bg-white p-4 sm:p-5 border border-slate-100 hover:border-slate-200 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
       <div>
         {/* Top Image Container with Badges */}
-        <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-[#fafafa] flex items-center justify-center mb-5 p-4">
+        <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-[#fafafa] mb-5 p-2">
           {/* Status Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
             {isOutOfStock ? (
@@ -85,11 +85,11 @@ export function ProductCard({ product }: ProductCardProps) {
           </button>
 
           {/* Product Photo */}
-          <Link href={`/urun/${product.slug}`} className="w-full h-full flex items-center justify-center">
+          <Link href={`/urun/${product.slug}`} className="w-full h-full block">
             <img
               src={primaryImage}
               alt={product.name}
-              className="max-h-full max-w-full object-contain mix-blend-multiply transform group-hover:scale-105 transition-transform duration-500 ease-out"
+              className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 ease-out"
               loading="lazy"
             />
           </Link>

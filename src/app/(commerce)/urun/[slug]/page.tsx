@@ -46,7 +46,7 @@ export default function ProductDetailPage() {
   const favorite = isFavorite(product.id);
 
   const images = product.images.length > 0 ? product.images : [
-    { url: "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp", alt: product.name, isPrimary: true },
+    { url: "https://cdn.shopify.com/s/files/1/0569/0281/1815/products/x1-carbon-combo_800x.png", alt: product.name, isPrimary: true },
     { url: "https://store.metatechtr.com/bambu-lab-ams-2-bambu-lab-bambu-lab-9641-68-K.webp", alt: "AMS Unit", isPrimary: false },
     { url: "https://store.metatechtr.com/complete-hotend-assembly-x1-p1-bambu-lab-bambu-lab-4733-20-K.jpg", alt: "Hotend", isPrimary: false },
   ];
@@ -422,7 +422,7 @@ export default function ProductDetailPage() {
                 </div>
                 <div className="w-48 h-40 flex items-center justify-center shrink-0">
                   <img
-                    src="https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp"
+                    src="https://cdn.shopify.com/s/files/1/0569/0281/1815/products/x1-carbon-combo_800x.png"
                     alt="Chamber"
                     className="max-h-full object-contain"
                   />
