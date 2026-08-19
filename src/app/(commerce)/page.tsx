@@ -14,12 +14,37 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
+/* ─── Real MetaTechTR Product Images (T-Soft CDN) ─── */
+const IMG = {
+  // Bambu Lab 3D Printers
+  x1c: "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp",
+  p1s: "https://store.metatechtr.com/bambu-labp1s-ams-2-pro-combo3dprinter-with-buffer-bambu-lab-bambu-lab-9647-68-K.webp",
+  p2s: "https://store.metatechtr.com/bambu-lab-p2s-combo-3d-printer-bambu-lab-bambu-lab-9777-68-K.webp",
+  a1: "https://store.metatechtr.com/bambu-lab-a1-3d-printer-bambu-lab-bambu-lab-0-8657-62-K.webp",
+  h2s: "https://store.metatechtr.com/bambu-lab-h2s-combo-3d-printer-bambu-lab-bambu-lab-9668-68-K.webp",
+  // Filament
+  filament: "https://store.metatechtr.com/uzy-pro-pla-1-75mm-graphene-black-1000g-uzy-uzy-7111-56-K.webp",
+  // Resin placeholder (from T-Soft)
+  resin: "https://store.metatechtr.com/elegoo-abs-like-resin-2-0-1kg-clear-blue-elegoo-elegoo-8613-60-K.webp",
+  // 3D Scanner
+  einstar: "https://store.metatechtr.com/einstar-3d-scanner-shining-3d-shining3d-6997-54-K.webp",
+  // Accessories
+  hotend: "https://store.metatechtr.com/complete-hotend-assembly-x1-p1-bambu-lab-bambu-lab-4733-20-K.jpg",
+  ams: "https://store.metatechtr.com/bambu-lab-ams-2-bambu-lab-bambu-lab-9641-68-K.webp",
+  // PEI Plate
+  peiPlate: "https://store.metatechtr.com/bambu-lab-dual-sided-textured-pei-plate-bambu-lab-bambu-lab-4795-20-K.jpg",
+  // Prusa
+  prusa: "https://store.metatechtr.com/original-prusa-mk4s-3d-printer-assembled-prusa-research-prusa-research-9559-68-K.webp",
+  // Logo
+  logo: "https://store.metatechtr.com/Data/EditorFiles/catalog/metatechtr/logo/metatechtr.png",
+};
+
 export default function HomePage() {
   const featuredPrinters = PRODUCTS.slice(0, 4);
 
   return (
     <div className="space-y-20 pb-20">
-      {/* 1. HERO SECTION (Exact Stitch Layout) */}
+      {/* 1. HERO SECTION */}
       <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50/50 to-white pt-12 pb-16 lg:pt-16 lg:pb-24 border-b border-slate-100">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -55,13 +80,16 @@ export default function HomePage() {
               <div className="relative rounded-3xl bg-white p-8 border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.06)] flex flex-col items-center">
                 <div className="relative w-full aspect-4/3 flex items-center justify-center">
                   <img
-                    src="https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png"
+                    src={IMG.x1c}
                     alt="Bambu Lab X1-Carbon Combo 3D Printer"
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>
-                <div className="text-[11px] text-slate-400 mt-2">
-                  *The filaments in the picture are sold separately
+                <div className="text-center mt-3">
+                  <div className="text-sm font-bold text-slate-900">Bambu Lab X1-Carbon Combo 3D Printer</div>
+                  <div className="text-[11px] text-slate-400 mt-1">
+                    *Filamentler ayrı satılmaktadır
+                  </div>
                 </div>
               </div>
             </div>
@@ -99,7 +127,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. KATEGORİLER (Stitch Bento Grid Layout) */}
+      {/* 3. KATEGORİLER (Bento Grid Layout) */}
       <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div>
           <h2 className="text-2xl font-black text-slate-900">Kategoriler</h2>
@@ -126,7 +154,7 @@ export default function HomePage() {
 
             <div className="relative w-full h-44 flex items-end justify-end mt-4">
               <img
-                src="https://cdn1.bambulab.com/bambu-lab/product/p1/p1s-combo.png"
+                src={IMG.p1s}
                 alt="3D Yazıcılar"
                 className="max-h-full object-contain"
               />
@@ -150,7 +178,7 @@ export default function HomePage() {
               </div>
               <div className="w-28 h-24 flex items-center justify-center">
                 <img
-                  src="https://cdn1.bambulab.com/bambu-lab/product/filament/pla-basic/pla-basic-black-1.png"
+                  src={IMG.filament}
                   alt="Filamentler"
                   className="max-h-full object-contain"
                 />
@@ -172,7 +200,7 @@ export default function HomePage() {
               </div>
               <div className="w-28 h-24 flex items-center justify-center">
                 <img
-                  src="https://cdn1.bambulab.com/bambu-lab/product/filament/pla-basic/pla-basic-black-1.png"
+                  src={IMG.resin}
                   alt="Reçineler"
                   className="max-h-full object-contain"
                 />
@@ -180,7 +208,8 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* 3D Tarayıcılar Card (Bottom Row) */}
+          {/* Bottom Row: 3 equal cards */}
+          {/* 3D Tarayıcılar */}
           <Link
             href="/3d-tarayici"
             className="md:col-span-4 group relative overflow-hidden rounded-3xl bg-white p-6 border border-slate-100 hover:border-slate-200 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex items-center justify-between"
@@ -195,10 +224,51 @@ export default function HomePage() {
             </div>
             <div className="w-24 h-20 flex items-center justify-center">
               <img
-                src="https://store.metatechtr.com/Data/EditorFiles/catalog/shining3d/einstar/einstar-1.png"
+                src={IMG.einstar}
                 alt="3D Tarayıcılar"
                 className="max-h-full object-contain"
               />
+            </div>
+          </Link>
+
+          {/* Yedek Parça & Aksesuar */}
+          <Link
+            href="/3d-yazici-yedek-parca-ve-aksesuarlari"
+            className="md:col-span-4 group relative overflow-hidden rounded-3xl bg-white p-6 border border-slate-100 hover:border-slate-200 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex items-center justify-between"
+          >
+            <div>
+              <h3 className="text-base font-bold text-slate-900 group-hover:text-[#1877f2] transition-colors">
+                Yedek Parça & Aksesuar
+              </h3>
+              <div className="mt-2 text-[#1877f2] font-bold text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <ArrowRight className="h-4 w-4" />
+              </div>
+            </div>
+            <div className="w-24 h-20 flex items-center justify-center">
+              <img
+                src={IMG.ams}
+                alt="Yedek Parça ve Aksesuarlar"
+                className="max-h-full object-contain"
+              />
+            </div>
+          </Link>
+
+          {/* Teknik Servis */}
+          <Link
+            href="/garanti-ve-servis"
+            className="md:col-span-4 group relative overflow-hidden rounded-3xl bg-[#0f172a] p-6 border border-slate-700 hover:border-slate-600 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-between"
+          >
+            <div>
+              <h3 className="text-base font-bold text-white group-hover:text-[#60a5fa] transition-colors">
+                Teknik Servis
+              </h3>
+              <p className="text-[11px] text-slate-400 mt-1">Yetkili garanti & onarım</p>
+              <div className="mt-2 text-[#60a5fa] font-bold text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <ArrowRight className="h-4 w-4" />
+              </div>
+            </div>
+            <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center">
+              <Wrench className="h-5 w-5 text-[#60a5fa]" />
             </div>
           </Link>
         </div>
@@ -235,12 +305,12 @@ export default function HomePage() {
             <div className="lg:col-span-5">
               <div className="rounded-2xl bg-white p-6 shadow-md flex flex-col items-center justify-center">
                 <img
-                  src="https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png"
-                  alt="Bambu Lab X1-Carbon"
+                  src={IMG.h2s}
+                  alt="Bambu Lab H2S Combo"
                   className="max-h-72 object-contain"
                 />
                 <span className="text-[10px] text-slate-400 mt-2">
-                  *The filaments in the picture are sold separately
+                  *Filamentler ayrı satılmaktadır
                 </span>
               </div>
             </div>
@@ -348,11 +418,11 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right: Gold Textured PEI Plate Image */}
+            {/* Right: PEI Plate Image */}
             <div className="lg:col-span-5 flex items-center justify-center">
               <div className="relative rounded-2xl bg-white p-6 shadow-sm border border-slate-100 max-w-xs">
                 <img
-                  src="https://cdn1.bambulab.com/bambu-lab/product/accessory/textured-pei-plate/textured-pei-plate-1.png"
+                  src={IMG.peiPlate}
                   alt="Textured PEI Build Plate"
                   className="max-h-60 object-contain rounded-lg"
                 />

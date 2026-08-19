@@ -57,7 +57,7 @@ export const useCartStore = create<CartState>()(
             keyFeatures: [],
             images: [
               {
-                url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+                url: "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp",
                 alt: "Bambu Lab X1-Carbon Combo",
                 isPrimary: true,
               },

@@ -35,17 +35,17 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+        url: "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp",
         alt: "Bambu Lab X1-Carbon Combo 3D Yazıcı",
         isPrimary: true,
       },
       {
-        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+        url: "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp",
         alt: "Bambu Lab X1C AMS Çoklu Filament Ünitesi",
         isPrimary: false,
       },
       {
-        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+        url: "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp",
         alt: "Bambu Lab X1C İç Mekanizma ve Hotend",
         isPrimary: false,
       },
@@ -123,12 +123,12 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://cdn1.bambulab.com/bambu-lab/product/p1/p1s-combo.png",
+        url: "https://store.metatechtr.com/bambu-labp1s-ams-2-pro-combo3dprinter-with-buffer-bambu-lab-bambu-lab-9647-68-K.webp",
         alt: "Bambu Lab P1S Combo 3D Yazıcı",
         isPrimary: true,
       },
       {
-        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+        url: "https://store.metatechtr.com/bambu-labp1s-ams-2-pro-combo3dprinter-with-buffer-bambu-lab-bambu-lab-9647-68-K.webp",
         alt: "Bambu Lab P1S Kapalı Kasa Yapısı",
         isPrimary: false,
       },
@@ -195,7 +195,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+        url: "https://store.metatechtr.com/bambu-lab-a1-3d-printer-bambu-lab-bambu-lab-0-8657-62-K.webp",
         alt: "Bambu Lab A1 Combo 3D Yazıcı",
         isPrimary: true,
       },
@@ -262,7 +262,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://www.prusa3d.com/content/images/product/default/2550.jpg",
+        url: "https://store.metatechtr.com/original-prusa-mk4s-3d-printer-assembled-prusa-research-prusa-research-9559-68-K.webp",
         alt: "Original Prusa MK4S 3D Yazıcı",
         isPrimary: true,
       },
@@ -325,7 +325,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+        url: "https://store.metatechtr.com/einstar-3d-scanner-shining-3d-shining3d-6997-54-K.webp",
         alt: "Shining 3D Einstar El Tipi 3D Tarayıcı",
         isPrimary: true,
       },
@@ -384,7 +384,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+        url: "https://store.metatechtr.com/uzy-pro-pla-1-75mm-graphene-black-1000g-uzy-uzy-7111-56-K.webp",
         alt: "Uzy Premium PLA 1Kg Filament Siyah",
         isPrimary: true,
       },
@@ -442,7 +442,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+        url: "https://store.metatechtr.com/bambu-lab-ams-2-bambu-lab-bambu-lab-9641-68-K.webp",
         alt: "Bambu Lab AMS Çoklu Malzeme Sistemi",
         isPrimary: true,
       },
@@ -496,7 +496,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       {
-        url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+        url: "https://store.metatechtr.com/complete-hotend-assembly-x1-p1-bambu-lab-bambu-lab-4733-20-K.jpg",
         alt: "Bambu Lab 0.4mm Hardened Steel Hotend",
         isPrimary: true,
       },

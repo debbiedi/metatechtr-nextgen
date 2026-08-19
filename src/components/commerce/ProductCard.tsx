@@ -20,7 +20,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const primaryImage =
     product.images.find((img) => img.isPrimary)?.url ||
     product.images[0]?.url ||
-    "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png";
+    "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp";
 
   const isOutOfStock = !product.stock.inStock;
   const isPreOrder = product.badge === "ÖN SİPARİŞ";

@@ -46,41 +46,40 @@ export default function ProductDetailPage() {
   const favorite = isFavorite(product.id);
 
   const images = product.images.length > 0 ? product.images : [
-    { url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png", alt: product.name, isPrimary: true },
-    { url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png", alt: "AMS Unit", isPrimary: false },
-    { url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png", alt: "Hotend", isPrimary: false },
-    { url: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png", alt: "Enclosure", isPrimary: false },
+    { url: "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp", alt: product.name, isPrimary: true },
+    { url: "https://store.metatechtr.com/bambu-lab-ams-2-bambu-lab-bambu-lab-9641-68-K.webp", alt: "AMS Unit", isPrimary: false },
+    { url: "https://store.metatechtr.com/complete-hotend-assembly-x1-p1-bambu-lab-bambu-lab-4733-20-K.jpg", alt: "Hotend", isPrimary: false },
   ];
 
   // Recommended accessories
   const recommendedAccessories = [
     {
       id: "rec-1",
-      name: "Bambu PLA Matte Filament 1kg - Gri",
-      brand: "BAMBU LAB",
-      price: 950.0,
-      image: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+      name: "UZY Premium PLA Filament 1kg - Mat Siyah",
+      brand: "UZY",
+      price: 550.0,
+      image: "https://store.metatechtr.com/uzy-pro-pla-1-75mm-graphene-black-1000g-uzy-uzy-7111-56-K.webp",
     },
     {
       id: "rec-2",
-      name: "Complete Hotend Assembly with Hardened Steel Nozzle",
+      name: "Complete Hotend Assembly - Sertleştirilmiş Çelik Nozzle",
       brand: "BAMBU LAB",
-      price: 1650.0,
-      image: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+      price: 1950.0,
+      image: "https://store.metatechtr.com/complete-hotend-assembly-x1-p1-bambu-lab-bambu-lab-4733-20-K.jpg",
     },
     {
       id: "rec-3",
-      name: "Textured PEI Plate - 256x256mm",
+      name: "Bambu Lab AMS 2 - Otomatik Çok Renkli Sistem",
       brand: "BAMBU LAB",
-      price: 1200.0,
-      image: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+      price: 18500.0,
+      image: "https://store.metatechtr.com/bambu-lab-ams-2-bambu-lab-bambu-lab-9641-68-K.webp",
     },
     {
       id: "rec-4",
-      name: "Bambu PETG-CF Filament 1kg - Siyah",
+      name: "Bambu Lab P2S Combo 3D Yazıcı",
       brand: "BAMBU LAB",
-      price: 1850.0,
-      image: "https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png",
+      price: 39990.0,
+      image: "https://store.metatechtr.com/bambu-lab-p2s-combo-3d-printer-bambu-lab-bambu-lab-9777-68-K.webp",
     },
   ];
 
@@ -423,7 +422,7 @@ export default function ProductDetailPage() {
                 </div>
                 <div className="w-48 h-40 flex items-center justify-center shrink-0">
                   <img
-                    src="https://cdn1.bambulab.com/bambu-lab/product/x1/x1-carbon-combo.png"
+                    src="https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp"
                     alt="Chamber"
                     className="max-h-full object-contain"
                   />
