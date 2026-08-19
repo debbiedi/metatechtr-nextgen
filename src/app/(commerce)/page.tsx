@@ -17,10 +17,10 @@ import {
 /* ─── Real MetaTechTR Product Images (T-Soft CDN) ─── */
 const IMG = {
   // Bambu Lab 3D Printers
-  x1c: "https://cdn.shopify.com/s/files/1/0569/0281/1815/products/x1-carbon-combo_800x.png",
-  p1s: "https://cdn.shopify.com/s/files/1/0569/0281/1815/files/P1S-Combo_800x.png",
+  x1c: "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp",
+  p1s: "https://store.metatechtr.com/bambu-labp1s-ams-2-pro-combo3dprinter-with-buffer-bambu-lab-bambu-lab-9647-68-K.webp",
   p2s: "https://store.metatechtr.com/bambu-lab-p2s-combo-3d-printer-bambu-lab-bambu-lab-9777-68-K.webp",
-  a1: "https://cdn.shopify.com/s/files/1/0569/0281/1815/files/A1-combo-1_800x.png",
+  a1: "https://store.metatechtr.com/bambu-lab-a1-3d-printer-bambu-lab-bambu-lab-0-8657-62-K.webp",
   h2s: "https://store.metatechtr.com/bambu-lab-h2s-combo-3d-printer-bambu-lab-bambu-lab-9668-68-K.webp",
   // Filament
   filament: "https://store.metatechtr.com/uzy-pro-pla-1-75mm-graphene-black-1000g-uzy-uzy-7111-56-K.webp",

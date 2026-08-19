@@ -20,7 +20,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const primaryImage =
     product.images.find((img) => img.isPrimary)?.url ||
     product.images[0]?.url ||
-    "https://cdn.shopify.com/s/files/1/0569/0281/1815/products/x1-carbon-combo_800x.png";
+    "https://store.metatechtr.com/bambu-lab-x2d-combo-3d-printer-bambu-lab-bambu-lab-10363-76-K.webp";
 
   const isOutOfStock = !product.stock.inStock;
   const isPreOrder = product.badge === "ÖN SİPARİŞ";
@@ -89,7 +89,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <img
               src={primaryImage}
               alt={product.name}
-              className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 ease-out"
+              className="w-full h-full object-contain mix-blend-multiply transform group-hover:scale-105 transition-transform duration-500 ease-out"
               loading="lazy"
             />
           </Link>
